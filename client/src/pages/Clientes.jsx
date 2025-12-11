@@ -47,14 +47,16 @@ const Clientes = () => {
   };
 
   const handleVistaPrevia = async (cliente) => {
-    try {
-      const res = await axios.get(`http://localhost:4000/api/clientes/completo/${cliente.cuit}`);
-      setClienteSeleccionado(res.data);
-      setModalVistaPreviaVisible(true);
-    } catch (error) {
-      console.error('Error al obtener datos del cliente:', error);
-      setMensajeError('No se pudo cargar la vista previa del cliente');
-    }
+   try {
+  const res = await axios.get(
+    `${process.env.REACT_APP_API_BASE}/api/clientes/completo/${cliente.cuit}`
+  );
+  setClienteSeleccionado(res.data);
+  setModalVistaPreviaVisible(true);
+} catch (error) {
+  console.error('Error al obtener datos del cliente:', error);
+  setMensajeError('No se pudo cargar la vista previa del cliente');
+}
   };
 
   const obtenerClientes = () => {
