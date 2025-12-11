@@ -20,9 +20,9 @@ dotenv.config(); //Carga las variables antes de que se usen en cualquier parte d
 const app = express();
 
 app.use(cors({
-    origin: 'http://localhost:3000', // Cambia si tu frontend está en otra URL
+    origin: process.env.FRONTEND_URL || 'http://localhost:3000',
     credentials: true
-}));
+  }));
 
 //esto es para que el servidor pueda recibir cookies
 app.use(morgan('dev'));
